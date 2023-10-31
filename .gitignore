@@ -147,6 +147,7 @@ dmypy.json
 .pyre/
 
 .idea
+media
 # pytype static type analyzer
 .pytype/
 
