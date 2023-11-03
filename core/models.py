@@ -42,3 +42,32 @@ class Skill(AbstractModel):
 
     def __str__(self):
         return f'Skill: {self.name}'
+
+
+class Experience(AbstractModel):
+    company_name = models.CharField(
+        max_length=254,
+        blank=True,
+        verbose_name='Company Name',
+    )
+    job_title = models.CharField(
+        max_length=254,
+        blank=True,
+        verbose_name='Job Title',
+    )
+    job_location = models.CharField(
+        max_length=254,
+        blank=True,
+        verbose_name='Job Location',
+    )
+    start_date = models.DateField(
+        verbose_name='Start Date'
+    )
+    end_date = models.DateField(
+        default=None,
+        null=True,
+        blank=True,
+        verbose_name='End Date'
+    )
+    def __str__(self):
+        return f'Experience: {self.company_name}'
