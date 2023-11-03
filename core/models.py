@@ -39,3 +39,6 @@ class Skill(AbstractModel):
         verbose_name='Percentage',
         validators=[MinValueValidator(0), MaxValueValidator(100)],
     )
+
+    def __str__(self):
+        return f'Skill: {self.name}'
