@@ -20,20 +20,36 @@ class GeneralSetting(AbstractModel):
 
 
 class ImageSetting(AbstractModel):
-    name = models.CharField(max_length=254, blank=True, verbose_name='Name')
-    description = models.CharField(max_length=254, blank=True, verbose_name='Description')
-    file = models.ImageField(upload_to='images/', blank=True, verbose_name='Image')
+    name = models.CharField(
+        max_length=254,
+        blank=True,
+        verbose_name='Name'
+    )
+    description = models.CharField(
+        max_length=254,
+        blank=True,
+        verbose_name='Description'
+    )
+    file = models.ImageField(
+        upload_to='images/',
+        blank=True,
+        verbose_name='Image'
+    )
 
     def __str__(self):
         return f'Image Setting: {self.name}'
 
 
 class Skill(AbstractModel):
-    order= models.IntegerField(
+    order = models.IntegerField(
         default=0,
         verbose_name='Order'
     )
-    name = models.CharField(max_length=254, blank=True, verbose_name='Name')
+    name = models.CharField(
+        max_length=254,
+        blank=True,
+        verbose_name='Name'
+    )
     percentage = models.IntegerField(
         default=50,
         verbose_name='Percentage',
@@ -69,6 +85,7 @@ class Experience(AbstractModel):
         blank=True,
         verbose_name='End Date'
     )
+
     def __str__(self):
         return f'Experience: {self.company_name}'
 
@@ -98,12 +115,13 @@ class Education(AbstractModel):
         blank=True,
         verbose_name='End Date'
     )
+
     def __str__(self):
         return f'Education: {self.school_name}'
 
 
 class SocialMedia(AbstractModel):
-    order= models.IntegerField(
+    order = models.IntegerField(
         default=0,
         verbose_name='Order'
     )
@@ -120,3 +138,28 @@ class SocialMedia(AbstractModel):
 
     def __str__(self):
         return f'SocialMedia: {self.link}'
+
+
+class Document(AbstractModel):
+    order = models.IntegerField(
+        default=0,
+        verbose_name='Order'
+    )
+    slug = models.SlugField(
+        max_length=254,
+        blank=True,
+        verbose_name='Slug',
+    )
+    button_text = models.CharField(
+        max_length=254,
+        blank=True,
+        verbose_name='Button Text',
+    )
+    file = models.FileField(
+        upload_to='documents/',
+        blank=True,
+        verbose_name='File',
+    )
+
+    def __str__(self):
+        return f'Document: {self.slug}'
