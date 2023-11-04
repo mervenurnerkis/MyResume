@@ -38,8 +38,16 @@ class ExperienceAdmin(admin.ModelAdmin):
 
 @admin.register(Education)
 class EducationAdmin(admin.ModelAdmin):
-    list_display = ['id', 'school_name', 'major', 'department', 'start_date', 'end_date']
+    list_display = ['id', 'school_name', 'major', 'department', 'start_date', 'end_date','updated_date', 'created_date']
     search_fields = ['school_name', 'major', 'department',]
     list_editable = ['school_name', 'major', 'department', 'start_date', 'end_date']
     class Meta:
         model = Education
+
+@admin.register(SocialMedia)
+class SocialMediaAdmin(admin.ModelAdmin):
+    list_display = ['id', 'link', 'order', 'icon', 'updated_date', 'created_date']
+    search_fields = ['link', 'icon',]
+    list_editable = ['link', 'order', 'icon', ]
+    class Meta:
+        model = SocialMedia

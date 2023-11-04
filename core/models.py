@@ -100,3 +100,23 @@ class Education(AbstractModel):
     )
     def __str__(self):
         return f'Education: {self.school_name}'
+
+
+class SocialMedia(AbstractModel):
+    order= models.IntegerField(
+        default=0,
+        verbose_name='Order'
+    )
+    link = models.URLField(
+        max_length=254,
+        blank=True,
+        verbose_name='Link',
+    )
+    icon = models.CharField(
+        max_length=254,
+        blank=True,
+        verbose_name='Icon',
+    )
+
+    def __str__(self):
+        return f'SocialMedia: {self.link}'
