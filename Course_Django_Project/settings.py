@@ -16,8 +16,6 @@ import environ
 env = environ.Env()
 environ.Env.read_env()
 
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -33,6 +31,7 @@ ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=list)
 
 CSRF_TRUSTED_ORIGINS = env('CSRF_TRUSTED_ORIGINS', cast=list)
 
+EMAIL_URL = env('EMAIL_URL')
 # Application definition
 
 INSTALLED_APPS = [
@@ -138,3 +137,10 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email configuration
+DEFAULT_FROM_EMAIL = 'Merve Nur NERKİS <nerkismervenur@gmail.com>'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# Apply environment configuration for email
+vars().update(env.email_url())
